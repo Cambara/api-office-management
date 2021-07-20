@@ -21,6 +21,13 @@ export const badRequest = (errors: unknown, response:Response): Response => {
   })
 }
 
+export const unauthorizedRequest = (response:Response): Response => {
+  return response.status(401).json({
+    status: false,
+    message: 'Usuário não autorizado'
+  })
+}
+
 export const notFoundRequest = (message: NotFoundMessageEnum, response:Response): Response => {
   return response.status(404).json({
     status: false,
