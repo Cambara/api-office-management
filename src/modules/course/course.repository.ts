@@ -1,4 +1,4 @@
-import { FilterQuery, Types } from 'mongoose'
+import { FilterQuery, Types, UpdateQuery } from 'mongoose'
 import { AbstractRepository } from '../../shared/repositories/abstract.reposity'
 import { ICourseLogModel } from '../course-log/models/course-log.model'
 import { ICourseLogDocument } from '../course-log/schemas/course-log.schema'
@@ -33,7 +33,7 @@ export class CourseRepository extends AbstractRepository<ICourseDocument, ICours
     return log[0]
   }
 
-  updateAndAddLog = async (cond: FilterQuery<ICourseModel>, course:FilterQuery<ICourseModel>, log:ICourseLogModel):Promise<boolean> => {
+  updateAndAddLog = async (cond: FilterQuery<ICourseDocument>, course:UpdateQuery<ICourseDocument>, log:ICourseLogModel):Promise<boolean> => {
     const result = await this.model.updateOne(cond, {
       $push: { logs: log },
       ...course
