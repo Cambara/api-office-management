@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { loginController, createAuthController, addCourseController } from '../modules'
+import { loginController, createAuthController, addCourseController, listCourseController } from '../modules'
 import { authMiddleware } from '../shared/midlewares/auth.middleware'
 
 const router = Router()
@@ -14,5 +14,6 @@ router.use(authMiddleware)
 
 // Courses
 router.post('/courses', addCourseController.handle)
+router.get('/courses', listCourseController.handle)
 
 export { router }
