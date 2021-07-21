@@ -23,7 +23,10 @@ export class AddCourseController implements IController {
 
         if (typeof params !== 'object' || Array.isArray(params)) return badRequest(params, response)
 
-        const course = await this.addCourseService.execute(params)
+        const course = await this.addCourseService.execute({
+          ...params,
+          userId: request.user._id
+        })
         return successRequest(course, response)
       } catch (error) {
         return internalErrorRequest(error, response)
