@@ -5,6 +5,7 @@ import { ICourseLogModel } from '../models/course-log.model'
 export interface ICourseLogDocument extends ICourseLogModel, Document {}
 
 const CourseLogSchema = createDefaultSchema({
+  userId: String,
   day: Date,
   name: String,
   link: String,
