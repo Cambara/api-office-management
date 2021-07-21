@@ -6,7 +6,9 @@ export enum NotFoundMessageEnum {
 }
 
 export enum UnauthorizedMessageEnum {
-  USER_UNAUTHORIZED = 'Usuário não autorizado'
+  USER_UNAUTHORIZED = 'Usuário não autorizado',
+  INVALID_TOKEN = 'Token inválido',
+  NOT_FOUND_TOKEN = 'Não encontrado um token válido'
 }
 
 export const successRequest = (data: unknown, response:Response): Response => {
