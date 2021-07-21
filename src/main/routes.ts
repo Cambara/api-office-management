@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { loginController, createAuthController, addCourseController, listCourseController } from '../modules'
+import { loginController, createAuthController, addCourseController, listCourseController, removeCourseController } from '../modules'
 import { authMiddleware } from '../shared/midlewares/auth.middleware'
 
 const router = Router()
@@ -15,5 +15,6 @@ router.use(authMiddleware)
 // Courses
 router.post('/courses', addCourseController.handle)
 router.get('/courses', listCourseController.handle)
+router.delete('/courses/:id', removeCourseController.handle)
 
 export { router }
