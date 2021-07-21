@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { IController } from '../../../shared/controllers/controller.protocol'
 import { ErrorNamesEnum } from '../../../shared/helpers/errors.helper'
-import { badRequest, internalErrorRequest, successRequest, unauthorizedRequest } from '../../../shared/helpers/http-response.helper'
+import { badRequest, internalErrorRequest, successRequest, UnauthorizedMessageEnum, unauthorizedRequest } from '../../../shared/helpers/http-response.helper'
 import { ValidatorService } from '../../../shared/services/validator/validator.service'
 import { ILoginDto } from './login.dto'
 import { LoginService } from './login.service'
@@ -29,7 +29,7 @@ export class LoginController implements IController {
       } catch (error) {
         const errorName = error.name
 
-        if (ErrorNamesEnum.INVALID_USER === errorName) return unauthorizedRequest(response)
+        if (ErrorNamesEnum.INVALID_USER === errorName) return unauthorizedRequest(UnauthorizedMessageEnum.USER_UNAUTHORIZED, response)
 
         return internalErrorRequest(error, response)
       }
