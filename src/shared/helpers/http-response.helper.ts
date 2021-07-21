@@ -5,6 +5,10 @@ export enum NotFoundMessageEnum {
   OBJECT_NOT_FOUND = 'Objeto não encontrado'
 }
 
+export enum UnauthorizedMessageEnum {
+  USER_UNAUTHORIZED = 'Usuário não autorizado'
+}
+
 export const successRequest = (data: unknown, response:Response): Response => {
   return response.json({
     data,
@@ -21,10 +25,10 @@ export const badRequest = (errors: unknown, response:Response): Response => {
   })
 }
 
-export const unauthorizedRequest = (response:Response): Response => {
+export const unauthorizedRequest = (message:UnauthorizedMessageEnum, response:Response): Response => {
   return response.status(401).json({
     status: false,
-    message: 'Usuário não autorizado'
+    message
   })
 }
 
